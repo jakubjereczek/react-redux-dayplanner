@@ -13,7 +13,6 @@ const ElementsList = ({ planner, removeClick }) => {
     ));
 
     save(planner);
-
     return (
         <div>
             <h3>Elementy {elements.length}</h3>

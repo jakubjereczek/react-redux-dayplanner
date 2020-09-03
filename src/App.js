@@ -16,7 +16,11 @@ const App = ({ loadElement }) => {
 
     if (loadedState !== undefined) {
       loadedState.forEach(element => {
-        loadElement(element.hour, element.text)
+        // load only elements added faster than 24h ago
+        const actualTime = new Date().getTime();
+        if (element.time + (3600 * 1000 * 24) >= actualTime) {
+          loadElement(element.hour, element.text, element.time)
+        }
       })
     }
   }
@@ -28,14 +32,12 @@ const App = ({ loadElement }) => {
       <ElementsList></ElementsList>
     </div>
   )
-
-
 }
 
 const mapDispatchToProps = (dispatch) => {
 
   return {
-    loadElement: (hour, text) => dispatch(addElement(hour, text))
+    loadElement: (hour, text, time) => dispatch(addElement(hour, text, time))
   }
 };
 

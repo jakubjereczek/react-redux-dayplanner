@@ -5,6 +5,7 @@ const planner = (state = [], action) => {
                 ...state, {
                     id: action.id,
                     hour: action.hour,
+                    time: action.time,
                     text: action.text,
                 }
             ]

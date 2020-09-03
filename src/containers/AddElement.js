@@ -17,13 +17,14 @@ const AddElement = ({ addClick }) => {
         } else if (event.target.type === "time") {
             hour = event.target.value;
         }
-
     }
 
     const handleAddElement = () => {
         console.log(hour, text);
         if (hour !== undefined && text !== undefined) {
-            addClick(hour, text);
+            // get data
+            const date = new Date().getTime();
+            addClick(hour, text, date);
             err = "Added element to state"
         } else {
             err = "Undefined value of text or time"
@@ -45,8 +46,8 @@ const AddElement = ({ addClick }) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addClick: (hour, text) => {
-            dispatch(addElement(hour, text))
+        addClick: (hour, text, fulldata) => {
+            dispatch(addElement(hour, text, fulldata))
         }
     }
 }
