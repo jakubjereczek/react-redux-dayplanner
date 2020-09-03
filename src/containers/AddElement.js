@@ -34,10 +34,10 @@ const AddElement = ({ addClick }) => {
     return (
         <div>
             <h3>Dodaj element do listy zadań dnia</h3>
-            <label htmlfor="text" value={text}>Zadanie</label>
-            <input type="text" name="text" onChange={handleChangeInput}></input>
-            <label htmlfor="data">Godzina</label>
-            <input type="time" value={hour} name="data" onChange={handleChangeInput}></input>
+            <label htmlFor="text" value={text}>Zadanie</label>
+            <input type="text" id="text" onChange={handleChangeInput}></input>
+            <label htmlFor="date">Godzina</label>
+            <input type="time" value={hour} id="date" onChange={handleChangeInput}></input>
             <button type="submit" onClick={handleAddElement}>Dodaj</button>
         </div>
     )

@@ -4,12 +4,16 @@ import Element from '../components/Element';
 
 import { connect } from 'react-redux';
 import { removeElement } from '../actions/planner.actions';
+import { save } from '../localStorage';
 
 const ElementsList = ({ planner, removeClick }) => {
 
     const elements = planner.map(element => (
         <Element key={element.id} {...element} f={() => removeClick(element.id)}></Element>
     ));
+
+    save(planner);
+
     return (
         <div>
             <h3>Elementy {elements.length}</h3>

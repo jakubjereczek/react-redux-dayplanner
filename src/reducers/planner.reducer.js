@@ -1,4 +1,4 @@
-const planner = (state = [{ id: 1, hour: 2000, text: "Message" }], action) => {
+const planner = (state = [], action) => {
     switch (action.type) {
         case "PLANNER_ADD":
             return [
