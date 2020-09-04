@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme, Main, AppContainer } from './style/App'
 
 import AddElement from './containers/AddElement';
 import ElementsList from './containers/ElementsList'
+import NotFound from './containers/NotFound';
 
 import { load } from './localStorage';
 
@@ -29,15 +31,23 @@ const App = ({ loadElement }) => {
   loadDateFromLocalStorage();
 
   return (
-    <ThemeProvider theme={theme}>
-      <AppContainer>
-        <Main>
-          <AddElement></AddElement>
-          <ElementsList></ElementsList>
-        </Main>
-      </AppContainer>
-    </ThemeProvider>
-
+    <Router>
+      <ThemeProvider theme={theme}>
+        <AppContainer>
+          <Main>
+            <Switch>
+              <Route exact path="/">
+                <AddElement />
+                <ElementsList />
+              </Route>
+              <Route>
+                <NotFound />
+              </Route>
+            </Switch>
+          </Main>
+        </AppContainer>
+      </ThemeProvider>
+    </Router>
   )
 }
 

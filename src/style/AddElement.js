@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const Title = styled.h3`
-    letter-spacing: 1.2px;
-    text-align: center;
-    width: 100%;
-`
-
 export const Input = styled.input`
     display: block;
     width: 100%;

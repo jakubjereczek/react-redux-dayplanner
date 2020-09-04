@@ -5,6 +5,13 @@ export const theme = {
         main: "#19a56f",
     }
 }
+
+export const Title = styled.h3`
+    letter-spacing: 1.2px;
+    text-align: center;
+    width: 100%;
+`
+
 export const Button = styled.button`
     display: block;
     margin-left: calc(100% - 120px);
@@ -16,9 +23,9 @@ export const Button = styled.button`
 `
 
 export const ButtonInside = styled(Button)`
-    background: ${props => props.theme.colors.main};
-    color: #fff;
-    border: 1px solid #fff;
+    background: #fff;
+    color: ${props => props.theme.colors.main};
+    border: 1px solid ${props => props.theme.colors.main};
     width: 100%;
     min-width: 60px;
     margin-top: 2px;

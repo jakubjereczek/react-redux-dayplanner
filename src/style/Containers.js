@@ -10,3 +10,8 @@ export const AddContainer = styled.div`
 export const ElementsContainer = styled(AddContainer)`
     padding: 10px 0; 
 `;
+
+
+export const ErrorContainer = styled(AddContainer)`
+
+`

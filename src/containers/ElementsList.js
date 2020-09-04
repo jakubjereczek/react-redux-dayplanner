@@ -3,7 +3,8 @@ import React from 'react';
 import { ElementsContainer } from '../style/Containers';
 import Element from '../components/Element';
 
-import { Title, List } from '../style/ElementsList';
+import { List } from '../style/ElementsList';
+import { Title } from '../style/App';
 
 import { connect } from 'react-redux';
 import { removeElement } from '../actions/planner.actions';
@@ -11,7 +12,11 @@ import { save } from '../localStorage';
 
 const ElementsList = ({ planner, removeClick }) => {
 
-    let elements = planner.map(element => (
+    let elements = planner.sort((a, b) => {
+        return a.expiredDate - b.expiredDate;
+    });
+
+    elements = elements.map(element => (
         <Element key={element.id} {...element} f={() => removeClick(element.id)}></Element>
     ));
 

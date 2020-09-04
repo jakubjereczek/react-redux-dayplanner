@@ -3,8 +3,8 @@ import React from 'react';
 import { AddContainer } from '../style/Containers';
 import { addElement } from '../actions/planner.actions';
 
-import { Title, Input, Label } from '../style/AddElement';
-import { Button } from '../style/App';
+import { Input, Label } from '../style/AddElement';
+import { Title, Button } from '../style/App';
 
 import { connect } from 'react-redux';
 
