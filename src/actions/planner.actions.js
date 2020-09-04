@@ -1,10 +1,10 @@
 let id = 0;
 
-export const addElement = (hour, text, time) => ({
+export const addElement = (expiredDate, text, createdDate) => ({
     type: "PLANNER_ADD",
     id: id++,
-    hour,
-    time,
+    expiredDate,
+    createdDate,
     text
 })
 

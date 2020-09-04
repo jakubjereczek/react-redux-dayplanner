@@ -1,12 +1,16 @@
 import React from 'react';
 
+import { AddContainer } from '../style/Containers';
 import { addElement } from '../actions/planner.actions';
+
+import { Title, Input, Label } from '../style/AddElement';
+import { Button } from '../style/App';
 
 import { connect } from 'react-redux';
 
 const AddElement = ({ addClick }) => {
 
-    let text, hour;
+    let text, expired;
     let err = "";
 
     const handleChangeInput = (event) => {
@@ -15,16 +19,20 @@ const AddElement = ({ addClick }) => {
         if (event.target.type === "text") {
             text = event.target.value;
         } else if (event.target.type === "time") {
-            hour = event.target.value;
+            const actualDate = ((new Date().
+                toLocaleDateString()).split(".")).reverse().join("-");
+            console.log(actualDate)
+            const expiredDate = (new Date(`${actualDate} ${event.target.value}`)).getTime();
+            console.log(expiredDate)
+            expired = expiredDate;
         }
     }
 
     const handleAddElement = () => {
-        console.log(hour, text);
-        if (hour !== undefined && text !== undefined) {
+        if (expired !== undefined && text !== undefined) {
             // get data
-            const date = new Date().getTime();
-            addClick(hour, text, date);
+            const createdDate = new Date().getTime();
+            addClick(expired, text, createdDate);
             err = "Added element to state"
         } else {
             err = "Undefined value of text or time"
@@ -33,21 +41,21 @@ const AddElement = ({ addClick }) => {
     }
 
     return (
-        <div>
-            <h3>Dodaj element do listy zadań dnia</h3>
-            <label htmlFor="text" value={text}>Zadanie</label>
-            <input type="text" id="text" onChange={handleChangeInput}></input>
-            <label htmlFor="date">Godzina</label>
-            <input type="time" value={hour} id="date" onChange={handleChangeInput}></input>
-            <button type="submit" onClick={handleAddElement}>Dodaj</button>
-        </div>
+        <AddContainer>
+            <Title>Dodaj element do listy zadań dnia!</Title>
+            <Label htmlFor="text" value={text}>Zadanie</Label>
+            <Input type="text" id="text" onChange={handleChangeInput}></Input>
+            <Label htmlFor="date">Godzina</Label>
+            <Input type="time" value={expired} id="date" onChange={handleChangeInput}></Input>
+            <Button type="submit" onClick={handleAddElement}>Dodaj element</Button>
+        </AddContainer>
     )
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addClick: (hour, text, fulldata) => {
-            dispatch(addElement(hour, text, fulldata))
+        addClick: (expiredDate, text, createdDate) => {
+            dispatch(addElement(expiredDate, text, createdDate))
         }
     }
 }

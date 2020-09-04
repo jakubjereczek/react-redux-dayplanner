@@ -4,8 +4,8 @@ const planner = (state = [], action) => {
             return [
                 ...state, {
                     id: action.id,
-                    hour: action.hour,
-                    time: action.time,
+                    expiredDate: action.expiredDate,
+                    createdDate: action.createdDate,
                     text: action.text,
                 }
             ]
