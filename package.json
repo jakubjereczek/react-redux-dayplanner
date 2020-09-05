@@ -1,4 +1,5 @@
 {
+  "homepage": "https://jakubjereczek.github.io/react-redux-dayplanner/",
   "name": "dayplanner",
   "version": "0.1.0",
   "private": true,
@@ -10,11 +11,13 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
     "redux": "^4.0.5",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "gh-pages": "^3.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

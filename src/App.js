@@ -23,7 +23,7 @@ const App = ({ loadElement }) => {
         // load only elements added faster than 24h ago
         const actualTime = new Date().getTime();
         console.log(element);
-        if (element.expiredDate + (3600 * 1000 * 24) >= actualTime) {
+        if (element.createdDate + (3600 * 1000 * 24) >= actualTime) {
           loadElement(element.id, element.expiredDate, element.text, element.createdDate)
         }
       })
@@ -32,7 +32,7 @@ const App = ({ loadElement }) => {
   loadDateFromLocalStorage();
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <ThemeProvider theme={theme}>
         <AppContainer>
           <Main>

@@ -15,15 +15,16 @@ const AddElement = ({ planner, addClick }) => {
 
     const handleChangeInput = (event) => {
 
-        console.log(event.target);
         if (event.target.type === "text") {
             text = event.target.value;
         } else if (event.target.type === "time") {
-            const actualDate = ((new Date().
-                toLocaleDateString()).split(".")).reverse().join("-");
-            console.log(actualDate)
-            const expiredDate = (new Date(`${actualDate} ${event.target.value}`)).getTime();
-            console.log(expiredDate)
+            const hours = event.target.value.slice(0, 2);
+            const minutes = event.target.value.slice(3, 5);
+            const actualDate = new Date();
+            const day = actualDate.getDate() < 10 ? `0${actualDate.getDate()}` : actualDate.getDate();
+            const month = actualDate.getMonth() + 1 < 10 ? `0${actualDate.getMonth() + 1}` : actualDate.getMonth() + 1;
+            const year = actualDate.getFullYear()
+            const expiredDate = new Date(year, month, day, hours, minutes).getTime();
             expired = expiredDate;
         }
     }
