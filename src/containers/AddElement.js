@@ -22,10 +22,11 @@ const AddElement = ({ planner, addClick }) => {
             const minutes = event.target.value.slice(3, 5);
             const actualDate = new Date();
             const day = actualDate.getDate() < 10 ? `0${actualDate.getDate()}` : actualDate.getDate();
-            const month = actualDate.getMonth() + 1 < 10 ? `0${actualDate.getMonth() + 1}` : actualDate.getMonth() + 1;
+            const month = actualDate.getMonth() < 10 ? `0${actualDate.getMonth()}` : actualDate.getMonth();
             const year = actualDate.getFullYear()
             const expiredDate = new Date(year, month, day, hours, minutes).getTime();
             expired = expiredDate;
+            console.log(expired, new Date(year, month, day, hours, minutes))
         }
     }
 
