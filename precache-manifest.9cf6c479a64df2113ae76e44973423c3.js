@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "48e13ea2edf82daef320d935c1f3c420",
+    "revision": "f25dc59cc636994c4a870c6f166f1c59",
     "url": "/react-redux-dayplanner/index.html"
   },
   {
-    "revision": "5543b9fe7b38a53a1e61",
+    "revision": "d546b459ba2ba0f59d61",
     "url": "/react-redux-dayplanner/static/css/main.5974a7fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-redux-dayplanner/static/js/2.de81a078.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5543b9fe7b38a53a1e61",
-    "url": "/react-redux-dayplanner/static/js/main.5b914769.chunk.js"
+    "revision": "d546b459ba2ba0f59d61",
+    "url": "/react-redux-dayplanner/static/js/main.95c17a77.chunk.js"
   },
   {
     "revision": "ff42cf1d5e7715148854",
