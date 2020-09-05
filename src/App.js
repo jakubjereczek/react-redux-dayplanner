@@ -7,6 +7,7 @@ import { theme, Main, AppContainer } from './style/App'
 import AddElement from './containers/AddElement';
 import ElementsList from './containers/ElementsList'
 import NotFound from './containers/NotFound';
+import Info from './containers/Info';
 
 import { load } from './localStorage';
 
@@ -23,7 +24,7 @@ const App = ({ loadElement }) => {
         const actualTime = new Date().getTime();
         console.log(element);
         if (element.expiredDate + (3600 * 1000 * 24) >= actualTime) {
-          loadElement(element.expiredDate, element.text, element.createdDate)
+          loadElement(element.id, element.expiredDate, element.text, element.createdDate)
         }
       })
     }
@@ -40,6 +41,9 @@ const App = ({ loadElement }) => {
                 <AddElement />
                 <ElementsList />
               </Route>
+              <Route path="/info/:id">
+                <Info props={null} />
+              </Route>
               <Route>
                 <NotFound />
               </Route>
@@ -54,7 +58,7 @@ const App = ({ loadElement }) => {
 const mapDispatchToProps = (dispatch) => {
 
   return {
-    loadElement: (expiredDate, text, createdDate) => dispatch(addElement(expiredDate, text, createdDate))
+    loadElement: (id, expiredDate, text, createdDate) => dispatch(addElement(id, expiredDate, text, createdDate))
   }
 };
 

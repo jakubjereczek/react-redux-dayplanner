@@ -8,7 +8,7 @@ import { Title, Button } from '../style/App';
 
 import { connect } from 'react-redux';
 
-const AddElement = ({ addClick }) => {
+const AddElement = ({ planner, addClick }) => {
 
     let text, expired;
     let err = "";
@@ -31,8 +31,12 @@ const AddElement = ({ addClick }) => {
     const handleAddElement = () => {
         if (expired !== undefined && text !== undefined) {
             // get data
+            console.log(planner)
+
+            const id = planner.length === 0 ? 1 : planner[planner.length - 1].id + 1;
+            console.log("ID", id);
             const createdDate = new Date().getTime();
-            addClick(expired, text, createdDate);
+            addClick(id, expired, text, createdDate);
             err = "Added element to state"
         } else {
             err = "Undefined value of text or time"
@@ -52,12 +56,18 @@ const AddElement = ({ addClick }) => {
     )
 }
 
+const mapStateToProps = (state) => {
+    return {
+        planner: state.planner
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
-        addClick: (expiredDate, text, createdDate) => {
-            dispatch(addElement(expiredDate, text, createdDate))
+        addClick: (id, expiredDate, text, createdDate) => {
+            dispatch(addElement(id, expiredDate, text, createdDate))
         }
     }
 }
 
-export default connect(null, mapDispatchToProps)(AddElement);
+export default connect(mapStateToProps, mapDispatchToProps)(AddElement);

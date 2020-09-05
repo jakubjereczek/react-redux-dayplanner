@@ -14,9 +14,10 @@ export const SingleElement = styled.li`
 export const Text = styled.p`
     flex-basis: 75%;
     display: inline-block;
+    padding: 0px 10px;
     /* overflow-wrap: break-word;
     word-wrap: break-word; */
-    font-size: 0.9rem;
+    font-size: 1.25rem;
     color: #fff;
 `
 

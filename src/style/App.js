@@ -12,6 +12,10 @@ export const Title = styled.h3`
     width: 100%;
 `
 
+export const Subtitle = styled.h4`
+    letter-spacing: 1.2px;
+`
+
 export const Button = styled.button`
     display: block;
     margin-left: calc(100% - 120px);

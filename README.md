@@ -11,6 +11,7 @@ The project was created for learning and practice of Redux and styled compontent
 
 ## Technologies
 - JavaScript ES6,
-- React fromework,
+- React framework,
 - React Redux
+- React Router
 - Styled components 

@@ -12,26 +12,29 @@ import { save } from '../localStorage';
 
 const ElementsList = ({ planner, removeClick }) => {
 
-    let elements = planner.sort((a, b) => {
+    save(planner);
+
+    let sortedPlanner = [...planner];
+
+    sortedPlanner.sort((a, b) => {
         return a.expiredDate - b.expiredDate;
     });
 
-    elements = elements.map(element => (
+    sortedPlanner = sortedPlanner.map(element => (
         <Element key={element.id} {...element} f={() => removeClick(element.id)}></Element>
     ));
 
-    save(planner);
     return (
         <ElementsContainer>
-            <Title>Liczba elementów do wykonania w ciągu następnych 24 godzin: {elements.length}.</Title>
+            <Title>Liczba elementów do wykonania w ciągu następnych 24 godzin: {sortedPlanner.length}.</Title>
             <List>
-                {elements}
+                {sortedPlanner}
             </List>
         </ElementsContainer>
     )
 }
 
-const mapStateToprops = (state) => {
+const mapStateToProps = (state) => {
     return {
         planner: state.planner
     }
@@ -45,5 +48,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToprops, mapDispatchToProps)(ElementsList);
+export default connect(mapStateToProps, mapDispatchToProps)(ElementsList);
 

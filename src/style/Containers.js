@@ -15,3 +15,6 @@ export const ElementsContainer = styled(AddContainer)`
 export const ErrorContainer = styled(AddContainer)`
 
 `
+export const InfoContainer = styled(AddContainer)`
+
+`

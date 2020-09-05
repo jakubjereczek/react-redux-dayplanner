@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import { SingleElement, Text, Manage, Hour } from '../style/Element'
 import { ButtonInside } from '../style/App';
@@ -13,7 +14,7 @@ const Element = ({ id, text, expiredDate, f }) => {
     const minutes = `${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`}`;
 
     return (
-        <SingleElement><Hour>{hours}:{minutes} {dateString}</Hour><Text>{text}</Text><Manage>{<ButtonInside onClick={f}>Usuń</ButtonInside>}{<ButtonInside>Info</ButtonInside>}</Manage></SingleElement>
+        <SingleElement><Hour>{hours}:{minutes} {dateString}</Hour><Text>{text.length > 100 ? `${text.slice(0, 100)}...` : `${text}`}</Text><Manage>{<ButtonInside onClick={f}>Usuń</ButtonInside>}<Link to={"/info/" + id}>{<ButtonInside>Info</ButtonInside>}</Link></Manage></SingleElement>
     )
 }
 

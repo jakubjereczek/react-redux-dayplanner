@@ -1,6 +1,7 @@
 const planner = (state = [], action) => {
     switch (action.type) {
         case "PLANNER_ADD":
+            console.log(action)
             return [
                 ...state, {
                     id: action.id,
@@ -11,7 +12,6 @@ const planner = (state = [], action) => {
             ]
         case "PLANNER_REMOVE":
             const elementsWithoutElementToRemove = state.filter(element => element.id !== action.id);
-
             return [
                 ...elementsWithoutElementToRemove
             ]

@@ -1,8 +1,6 @@
-let id = 0;
-
-export const addElement = (expiredDate, text, createdDate) => ({
+export const addElement = (id, expiredDate, text, createdDate) => ({
     type: "PLANNER_ADD",
-    id: id++,
+    id,
     expiredDate,
     createdDate,
     text
