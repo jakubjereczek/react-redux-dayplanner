@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,KACE,YAAa,CACb,QAAS,CACT,sCACF,CAEA,EACE,oBACF,CAEA,EACE,UACF","file":"main.5974a7fb.chunk.css","sourcesContent":["body {\n  height: 100vh;\n  margin: 0;\n  font-family: Arial, Helvetica, sans-serif;\n}\n\n* {\n  text-decoration: none;\n}\n\na {\n  width: 100%;\n}"]}
