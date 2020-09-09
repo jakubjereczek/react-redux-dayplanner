@@ -17,7 +17,7 @@ export const Text = styled.p`
     padding: 0px 10px;
     /* overflow-wrap: break-word;
     word-wrap: break-word; */
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: #fff;
 `
 

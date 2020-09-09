@@ -20,6 +20,7 @@ export const Button = styled.button`
     display: block;
     margin-left: calc(100% - 120px);
     background: ${props => props.theme.colors.main};
+    font-size: 0.8rem;
     padding: 10px 15px;
     width: 120px;
     border: none;

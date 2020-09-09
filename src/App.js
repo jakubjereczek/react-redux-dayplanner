@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme, Main, AppContainer } from './style/App'
+import GlobalStyle from './index.css';
 
 import AddElement from './containers/AddElement';
 import ElementsList from './containers/ElementsList'
@@ -35,6 +36,7 @@ const App = ({ loadElement }) => {
     <Router basename={process.env.PUBLIC_URL}>
       <ThemeProvider theme={theme}>
         <AppContainer>
+          <GlobalStyle />
           <Main>
             <Switch>
               <Route exact path="/">
