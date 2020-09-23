@@ -1,22 +1,19 @@
 {
   "files": {
-    "main.css": "/react-redux-dayplanner/static/css/main.5974a7fb.chunk.css",
-    "main.js": "/react-redux-dayplanner/static/js/main.95c17a77.chunk.js",
-    "main.js.map": "/react-redux-dayplanner/static/js/main.95c17a77.chunk.js.map",
+    "main.js": "/react-redux-dayplanner/static/js/main.148a5171.chunk.js",
+    "main.js.map": "/react-redux-dayplanner/static/js/main.148a5171.chunk.js.map",
     "runtime-main.js": "/react-redux-dayplanner/static/js/runtime-main.bd37c4c5.js",
     "runtime-main.js.map": "/react-redux-dayplanner/static/js/runtime-main.bd37c4c5.js.map",
-    "static/js/2.de81a078.chunk.js": "/react-redux-dayplanner/static/js/2.de81a078.chunk.js",
-    "static/js/2.de81a078.chunk.js.map": "/react-redux-dayplanner/static/js/2.de81a078.chunk.js.map",
+    "static/js/2.fe7eb840.chunk.js": "/react-redux-dayplanner/static/js/2.fe7eb840.chunk.js",
+    "static/js/2.fe7eb840.chunk.js.map": "/react-redux-dayplanner/static/js/2.fe7eb840.chunk.js.map",
     "index.html": "/react-redux-dayplanner/index.html",
-    "precache-manifest.9cf6c479a64df2113ae76e44973423c3.js": "/react-redux-dayplanner/precache-manifest.9cf6c479a64df2113ae76e44973423c3.js",
+    "precache-manifest.e89c1a7897cb52ade75b440e5970544f.js": "/react-redux-dayplanner/precache-manifest.e89c1a7897cb52ade75b440e5970544f.js",
     "service-worker.js": "/react-redux-dayplanner/service-worker.js",
-    "static/css/main.5974a7fb.chunk.css.map": "/react-redux-dayplanner/static/css/main.5974a7fb.chunk.css.map",
-    "static/js/2.de81a078.chunk.js.LICENSE.txt": "/react-redux-dayplanner/static/js/2.de81a078.chunk.js.LICENSE.txt"
+    "static/js/2.fe7eb840.chunk.js.LICENSE.txt": "/react-redux-dayplanner/static/js/2.fe7eb840.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bd37c4c5.js",
-    "static/js/2.de81a078.chunk.js",
-    "static/css/main.5974a7fb.chunk.css",
-    "static/js/main.95c17a77.chunk.js"
+    "static/js/2.fe7eb840.chunk.js",
+    "static/js/main.148a5171.chunk.js"
   ]
 }

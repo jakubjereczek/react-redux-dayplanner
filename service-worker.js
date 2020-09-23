@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-redux-dayplanner/precache-manifest.9cf6c479a64df2113ae76e44973423c3.js"
+  "/react-redux-dayplanner/precache-manifest.e89c1a7897cb52ade75b440e5970544f.js"
 );
 
 self.addEventListener('message', (event) => {
