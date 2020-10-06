@@ -7,12 +7,13 @@ import { Subtitle, Title, ButtonInside } from '../style/App';
 
 const Info = ({ planner }) => {
 
+    const actualTime = new Date().getTime();
+
     // index in array
     let { id } = useParams();
 
     // find element 
     const elementExist = planner.find(element => element.id === Number(id));
-    console.log(elementExist)
 
     const showDate = (d) => {
         const date = new Date(d);
@@ -35,8 +36,12 @@ const Info = ({ planner }) => {
             <p>{elementExist.text}</p>
             <Subtitle>Element do wykonania do: </Subtitle>
             <p>{showDate(elementExist.expiredDate)}</p>
-            <Subtitle>Element zostanie automatycznie usunięty (24 godziny po dodaniu): </Subtitle>
-            <p>{showDate(elementExist.createdDate + (3600 * 1000 * 24))}</p>
+
+            {elementExist.expiredDate < actualTime ? (
+                <Subtitle>Wygasł czas na wykonanie zadania!</Subtitle>
+            ) : (
+                    <Subtitle>Posiadasz jeszcze czas na wykonanie zadania!</Subtitle>
+                )}
             <Link to="/" ><ButtonInside>Wróć do strony głownej</ButtonInside></Link>
         </InfoContainer>
     )

@@ -15,3 +15,4 @@ The project was created for learning and practice of Redux and styled compontent
 - React Redux
 - React Router
 - Styled components 
+- React-Final-Form

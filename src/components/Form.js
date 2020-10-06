@@ -20,9 +20,14 @@ const Form = ({ planner, addElement }) => {
         const hours = value.slice(0, 2);
         const minutes = value.slice(3, 5);
         const actualDate = new Date();
-        const day = actualDate.getDate() < 10 ? `0${actualDate.getDate()}` : actualDate.getDate();
+        const actualHours = actualDate.getHours();
+        const actualMinutes = actualDate.getMinutes();
+        let day = actualDate.getDate() < 10 ? `0${actualDate.getDate()}` : actualDate.getDate();
         const month = actualDate.getMonth() < 10 ? `0${actualDate.getMonth()}` : actualDate.getMonth();
         const year = actualDate.getFullYear()
+        if (hours < actualHours || (hours == actualHours && actualMinutes <= minutes)) {
+            day++;
+        }
         const expiredDate = new Date(year, month, day, hours, minutes).getTime();
         const id = planner.length === 0 ? 1 : planner[planner.length - 1].id + 1;
         const createdDate = new Date().getTime();

@@ -20,15 +20,24 @@ const ElementsList = ({ planner, removeClick }) => {
         return a.expiredDate - b.expiredDate;
     });
 
-    sortedPlanner = sortedPlanner.map(element => (
+    const actualTime = new Date().getTime();
+
+    let elementsToDo = sortedPlanner.filter(task => task.expiredDate > actualTime)
+    let elementsExpired = sortedPlanner.filter(task => task.expiredDate <= actualTime);
+
+    elementsToDo = elementsToDo.map(element => (
         <Element key={element.id} {...element} f={() => removeClick(element.id)}></Element>
+    ));
+    elementsExpired = elementsExpired.map(element => (
+        <Element expired key={element.id} {...element} f={() => removeClick(element.id)}></Element>
     ));
 
     return (
         <ElementsContainer>
-            <Title>Liczba elementów do wykonania w ciągu następnych 24 godzin: {sortedPlanner.length}.</Title>
+            <Title>Liczba elementów do wykonania: {sortedPlanner.length}.</Title>
             <List>
-                {sortedPlanner}
+                {elementsToDo}
+                {elementsExpired}
             </List>
         </ElementsContainer>
     )

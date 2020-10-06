@@ -21,12 +21,7 @@ const App = ({ loadElement }) => {
 
     if (loadedState !== undefined) {
       loadedState.forEach(element => {
-        // load only elements added faster than 24h ago
-        const actualTime = new Date().getTime();
-        console.log(element);
-        if (element.createdDate + (3600 * 1000 * 24) >= actualTime) {
-          loadElement(element.id, element.expiredDate, element.text, element.createdDate)
-        }
+        loadElement(element.id, element.expiredDate, element.text, element.createdDate)
       })
     }
   }

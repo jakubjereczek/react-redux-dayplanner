@@ -4,7 +4,7 @@ export const SingleElement = styled.li`
     display: flex;
     align-items: flex-start;
 
-    background: ${props => props.theme.colors.main};
+    background: ${props => props.expired ? "tomato" : props.theme.colors.main};
     text-decoration: none;
     list-style: none;
     padding: 5px 10px;
