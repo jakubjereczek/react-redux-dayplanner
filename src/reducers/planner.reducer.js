@@ -1,7 +1,11 @@
+import {
+    PLANNER_ADD,
+    PLANNER_REMOVE
+} from '../constants'
+
 const planner = (state = [], action) => {
     switch (action.type) {
-        case "PLANNER_ADD":
-            console.log(action)
+        case PLANNER_ADD:
             return [
                 ...state, {
                     id: action.id,
@@ -10,7 +14,7 @@ const planner = (state = [], action) => {
                     text: action.text,
                 }
             ]
-        case "PLANNER_REMOVE":
+        case PLANNER_REMOVE:
             const elementsWithoutElementToRemove = state.filter(element => element.id !== action.id);
             return [
                 ...elementsWithoutElementToRemove

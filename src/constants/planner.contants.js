@@ -1,0 +1,2 @@
+export const PLANNER_ADD = 'PLANNER_ADD';
+export const PLANNER_REMOVE = 'PLANNER_REMOVE';

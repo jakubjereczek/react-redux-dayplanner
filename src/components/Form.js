@@ -25,7 +25,7 @@ const Form = ({ planner, addElement }) => {
         let day = actualDate.getDate() < 10 ? `0${actualDate.getDate()}` : actualDate.getDate();
         const month = actualDate.getMonth() < 10 ? `0${actualDate.getMonth()}` : actualDate.getMonth();
         const year = actualDate.getFullYear()
-        if (hours < actualHours || (hours == actualHours && actualMinutes <= minutes)) {
+        if (Number(hours) < actualHours || ((Number(hours) == actualHours) && (actualMinutes > Number(minutes)))) {
             day++;
         }
         const expiredDate = new Date(year, month, day, hours, minutes).getTime();
