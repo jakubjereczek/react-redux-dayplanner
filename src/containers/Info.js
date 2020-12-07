@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from "react-router-dom";
 import { connect } from 'react-redux';
 
+import Profil from './Profil';
 import { InfoContainer } from '../style/Containers';
 import { Subtitle, Title, ButtonInside } from '../style/App';
 
@@ -21,30 +22,38 @@ const Info = ({ planner }) => {
         const minutes = `${date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`}`;
         return `${date.toLocaleDateString()} ${hours}:${minutes}`
     }
+    console.log("ELEMENT", elementExist, planner)
     if (elementExist === undefined) {
         return (
-            <InfoContainer>
-                <Title>Elementu o podanym ID nie mamy w bazie!</Title>
-                <Link to="/"><ButtonInside>Wróć do strony głownej</ButtonInside></Link>
-            </InfoContainer>
+            <>
+                <Profil />
+                <InfoContainer>
+                    <Title>Elementu o podanym ID nie mamy w bazie!</Title>
+                    <Link to="/"><ButtonInside>Wróć do strony głownej</ButtonInside></Link>
+                </InfoContainer>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <Profil />
+                <InfoContainer>
+                    <Title>Informacje o elemencie {id}</Title>
+                    <Subtitle>Treść</Subtitle>
+                    <p>{elementExist.text}</p>
+                    <Subtitle>Element do wykonania do: </Subtitle>
+                    <p>{showDate(elementExist.expiredDate)}</p>
+
+                    {elementExist.expiredDate < actualTime ? (
+                        <Subtitle>Wygasł czas na wykonanie zadania!</Subtitle>
+                    ) : (
+                            <Subtitle>Posiadasz jeszcze czas na wykonanie zadania!</Subtitle>
+                        )}
+                    <Link to="/" ><ButtonInside>Wróć do strony głownej</ButtonInside></Link>
+                </InfoContainer>
+            </>
         )
     }
-    return (
-        <InfoContainer>
-            <Title>Informacje o elemencie {id}</Title>
-            <Subtitle>Treść</Subtitle>
-            <p>{elementExist.text}</p>
-            <Subtitle>Element do wykonania do: </Subtitle>
-            <p>{showDate(elementExist.expiredDate)}</p>
-
-            {elementExist.expiredDate < actualTime ? (
-                <Subtitle>Wygasł czas na wykonanie zadania!</Subtitle>
-            ) : (
-                    <Subtitle>Posiadasz jeszcze czas na wykonanie zadania!</Subtitle>
-                )}
-            <Link to="/" ><ButtonInside>Wróć do strony głownej</ButtonInside></Link>
-        </InfoContainer>
-    )
 }
 
 const mapStateToProps = (state) => {
