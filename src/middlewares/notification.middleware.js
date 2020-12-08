@@ -4,32 +4,51 @@ import {
     ACCOUNT_LOGIN_LOADING_FAILED,
     ACCOUNT_LOGOUT_LOADING,
     ACCOUNT_LOGOUT_LOADING_SUCCESFUL,
-    ACCOUNT_LOGOUT_LOADING_FAILED
+    ACCOUNT_LOGOUT_LOADING_FAILED,
+    ACCOUNT_CHANGE_LOADING,
+    ACCOUNT_CHANGE_LOADING_SUCCESFUL,
+    ACCOUNT_CHANGE_LOADING_FAILED,
+    ACCOUNT_REMIND_PASSWORD_LOADING,
+    ACCOUNT_REMIND_PASSWORD_LOADING_SUCCESFUL,
+    ACCOUNT_REMIND_PASSWORD_LOADING_FAILED
 } from '../constants'
 
 import notification from '../toast'
+import errors from '../utils/errors';
 
 const notificationMiddleware = () => next => action => {
     console.log(action.type)
 
     switch (action.type) {
         case ACCOUNT_LOGIN_LOADING:
-            notification.toastDefault("Rozpoczynam logowanie...")
+        case ACCOUNT_LOGOUT_LOADING:
+        case ACCOUNT_CHANGE_LOADING:
+        case ACCOUNT_REMIND_PASSWORD_LOADING:
+            notification.toastDefault("Ładowanie...")
             break;
         case ACCOUNT_LOGIN_LOADING_SUCCESFUL:
-            notification.toastSuccess("Udało się zalogować.")
+            notification.toastSuccess("Udało się zalogować!")
             break;
         case ACCOUNT_LOGIN_LOADING_FAILED:
-            notification.toastWarn("Wystąpił problem z logowaniem");
-            break;
-        case ACCOUNT_LOGOUT_LOADING:
-            notification.toastDefault("Rozpoczynam wylogowywanie...")
+            notification.toastWarn("Wystąpił problem z logowaniem. Bląd: " + errors.selectAuthError(action.err_code));
             break;
         case ACCOUNT_LOGOUT_LOADING_SUCCESFUL:
-            notification.toastSuccess("Udało się wylogować.")
+            notification.toastSuccess("Udało się wylogować!")
             break;
         case ACCOUNT_LOGOUT_LOADING_FAILED:
-            notification.toastWarn("Wystąpił problem z wylogowaniem");
+            notification.toastWarn("Wystąpił problem z wylogowaniem. Bląd: " + errors.selectAuthError(action.err_code));
+            break;
+        case ACCOUNT_CHANGE_LOADING_SUCCESFUL:
+            notification.toastSuccess("Udało się zmienić dane!")
+            break;
+        case ACCOUNT_CHANGE_LOADING_FAILED:
+            notification.toastWarn("Wystąpił problem ze zmiana danych. Bląd " + errors.selectAuthError(action.err_code));
+            break;
+        case ACCOUNT_REMIND_PASSWORD_LOADING_SUCCESFUL:
+            notification.toastSuccess("Sprawdz Twoj email dla kolejnych instrukcji!")
+            break;
+        case ACCOUNT_REMIND_PASSWORD_LOADING_FAILED:
+            notification.toastWarn("Wystąpił problem z odzyskiwaniem hasla. Bląd " + errors.selectAuthError(action.err_code));
             break;
     }
     next(action);

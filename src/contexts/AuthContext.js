@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
 
     const singup = (email, password) => auth.createUserWithEmailAndPassword(email, password);
 
-
     const login = (email, password) => auth.signInWithEmailAndPassword(email, password);
 
     // return await new Promise((resolve, reject) => {
@@ -35,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     const updateEmail = (email) => currentUser.updateEmail(email);
 
-    const updatePassword = (password) => currentUser.updateEmail(password);
+    const updatePassword = (password) => currentUser.updatePassword(password);
 
     const reset = (email) => auth.sendPasswordResetEmail(email);
 

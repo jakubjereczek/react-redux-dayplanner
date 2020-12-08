@@ -9,38 +9,45 @@ import { Button, ButtonInside } from '../style/App';
 
 import { useAuth } from '../contexts/AuthContext'
 
+import { useDispatch } from 'react-redux'
+
+import {
+    ACCOUNT_REMIND_PASSWORD_LOADING,
+    ACCOUNT_REMIND_PASSWORD_LOADING_SUCCESFUL,
+    ACCOUNT_REMIND_PASSWORD_LOADING_FAILED
+} from '../constants';
+
 const ForgotPassword = () => {
 
+    const dispatch = useDispatch();
     const {
         currentUser,
-        resetPassword } = useAuth();
+        reset } = useAuth();
 
-    const [isError, setError] = useState("");
-    const [isMessage, setMessage] = useState("");
 
     const [isLoading, setLoading] = useState(false);
 
     const required = value => (value ? undefined : 'Pole jest wymagane')
 
     const onSubmit = async (values) => {
-        try {
-            setError("")
-            setMessage("");
-            setLoading(true);
-            await resetPassword(values.email);
-            setMessage("Sprawdz Twoj email dla kolejnych instrukcji")
-        } catch (err) {
-            setError("Bląd z zresetowaniem hasla")
-        }
-        setLoading(false);
+
+        setLoading(true);
+        dispatch({ type: ACCOUNT_REMIND_PASSWORD_LOADING })
+        reset(values.email)
+            .then(function (res) {
+                dispatch({ type: ACCOUNT_REMIND_PASSWORD_LOADING_SUCCESFUL })
+            })
+            .catch(function (err) {
+                dispatch({ type: ACCOUNT_REMIND_PASSWORD_LOADING_FAILED, err_code: err.code })
+            }).finally(() => {
+                setLoading(false);
+            })
 
     }
 
     return (
         <AddContainer>
             <Title>Przypomij haslo</Title>
-            {isError ? <h4>{isError}</h4> : null}
-            {isMessage ? <h4>{isMessage}</h4> : null}
             <FinalForm onSubmit={onSubmit}
                 render={({ handleSubmit, form, submitting, pristine, values }) => (
                     <form onSubmit={handleSubmit}>
@@ -61,8 +68,6 @@ const ForgotPassword = () => {
             />
             <p>Nie posiadasz konta? <Link to="/signup" >Zarejestuj sie</Link></p>
             <p>Wroc do <Link to="/login">logowania</Link></p>
-
-
         </AddContainer>
     )
 }

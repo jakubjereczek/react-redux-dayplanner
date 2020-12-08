@@ -19,6 +19,7 @@ import UpdateProfile from './containers/UpdateProfile';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import BlockPublicRoute from './components/BlockPublicRoute';
 import PrivateRoute from './components/PrivateRoute';
 
 import { load } from './localStorage';
@@ -59,15 +60,16 @@ const App = ({ loadElement }) => {
                     {/* <Info props={null} /> */}
                     <Info />
                   </PrivateRoute>
-                  <Route path="/login">
+                  {/* BlockPublicRoute dla routow, ktore nie maja być wyswietlane w przypadku zalogowania (nastapi przekierowanie na "/") */}
+                  <BlockPublicRoute path="/login">
                     <Login />
-                  </Route>
-                  <Route path="/signup">
+                  </BlockPublicRoute>
+                  <BlockPublicRoute path="/signup">
                     <Signup />
-                  </Route>
-                  <Route path="/forgot-password">
+                  </BlockPublicRoute>
+                  <BlockPublicRoute path="/forgot-password">
                     <ForgotPassword />
-                  </Route>
+                  </BlockPublicRoute>
                   <PrivateRoute path="/update-profile">
                     <UpdateProfile />
                   </PrivateRoute>

@@ -24,7 +24,7 @@ const Profil = () => {
                 dispatch({ type: ACCOUNT_LOGOUT_LOADING_SUCCESFUL })
             })
             .catch(function (err) {
-                dispatch({ type: ACCOUNT_LOGOUT_LOADING_FAILED })
+                dispatch({ type: ACCOUNT_LOGOUT_LOADING_FAILED, err_code: err.code })
             });
     }
     return (

@@ -9,41 +9,52 @@ import { Title } from '../style/App';
 import { Input, Label } from '../style/Form';
 import { Button, ButtonInside } from '../style/App';
 
-
 import { useAuth } from '../contexts/AuthContext'
+import { useDispatch } from 'react-redux'
+import {
+    ACCOUNT_CHANGE_LOADING,
+    ACCOUNT_CHANGE_LOADING_FAILED,
+    ACCOUNT_CHANGE_LOADING_SUCCESFUL
+} from '../constants';
+
+import notification from '../toast'
 
 const UpdateProfile = () => {
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const {
         currentUser,
-        updateAccountEmail, updateAccountPassword } = useAuth();
+        updateEmail, updatePassword } = useAuth();
 
-    const [isError, setError] = useState("");
     const [isLoading, setLoading] = useState(false);
 
     const required = value => (value ? undefined : 'Pole jest wymagane')
 
     const onSubmit = async (values) => {
         if (values.password !== values.passwordconfirm) {
-            return setError("Hasla nie są takie same!");
+            return notification.toastWarn("Hasla nie są identyczne!");
         }
-        const promises = [];
         setLoading(true);
-        setError("");
+        const promises = [];
+        console.log(values.email)
         if (values.email !== currentUser.email) {
-            promises.push(updateAccountEmail(values.email))
+            console.log("nie jest taki sam")
+            promises.push(updateEmail(values.email))
         }
-        if (values.password) {
-            promises.push(updateAccountEmail(values.password))
-        }
+        if (values.password)
+            promises.push(updatePassword(values.password))
+        values.email = "";
+        values.password = "";
+        values.passwordconfirm = "";
+        dispatch({ type: ACCOUNT_CHANGE_LOADING })
         Promise.all(promises).then(() => {
             // wszystkie musza byc succesful
-            history.push("/")
+            dispatch({ type: ACCOUNT_CHANGE_LOADING_SUCCESFUL })
+            // history.push("/")
         }).catch((err) => {
-
-            setError("Bląd z utworzeniem konta: " + err)
+            dispatch({ type: ACCOUNT_CHANGE_LOADING_FAILED, err_code: err.code })
         }).finally(() => {
             setLoading(false);
         });
@@ -54,7 +65,6 @@ const UpdateProfile = () => {
             <Profil />
             <AddContainer>
                 <Title>Aktualizacja profilu</Title>
-                {isError ? <h4>{isError}</h4> : null}
                 <FinalForm onSubmit={onSubmit}
                     render={({ handleSubmit, form, submitting, pristine, values }) => (
                         <form onSubmit={handleSubmit}>
@@ -91,7 +101,7 @@ const UpdateProfile = () => {
                         </form>
                     )}
                 />
-                <p>Nie chcesz edytowac?<Link to="/" >Anuluj</Link></p>
+                <p><Link to="/" >Powrót</Link></p>
             </AddContainer>
         </>
     )

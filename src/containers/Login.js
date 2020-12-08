@@ -40,7 +40,7 @@ const Login = () => {
                 history.push("/");
             })
             .catch(function (err) {
-                dispatch({ type: ACCOUNT_LOGIN_LOADING_FAILED })
+                dispatch({ type: ACCOUNT_LOGIN_LOADING_FAILED, err_code: err.code })
             })
         setLoading(false);
     }
