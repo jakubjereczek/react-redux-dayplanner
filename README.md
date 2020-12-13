@@ -16,3 +16,5 @@ The project was created for learning and practice of Redux and styled compontent
 - React Router
 - Styled components 
 - React-Final-Form
+- firebase
+- toast

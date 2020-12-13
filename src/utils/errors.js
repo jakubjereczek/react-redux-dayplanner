@@ -12,6 +12,10 @@ const selectAuthError = (code) => {
             return "Nie istnieje żaden rekord użytkownika odpowiadający podanemu identyfikatorowi.";
         case "auth/wrong-password":
             return "Haslo jest nieprawidłowe";
+        case "auth/weak-password":
+            return "Haslo jest zbyt słabe i nie spełnia warunkow wymaganych do zalozenia konta.";
+        case "auth/email-already-in-use":
+            return "Istnieje juz konto z podanym emailem."
         default:
             return "Wystąpił nieznany bląd: " + code;
     }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
+import { SubtitleOther, Button } from '../style/App';
+import { Image } from '../style/Profil';
 import { useAuth } from '../contexts/AuthContext'
-import { AddContainer } from '../style/Containers';
+import { ProfilContainer } from '../style/Containers';
 
 import { useDispatch } from 'react-redux'
 import {
@@ -28,11 +30,18 @@ const Profil = () => {
             });
     }
     return (
-        <AddContainer>
-            <p onClick={handleLogout}>Wyloguj się</p>
-            <h3>{currentUser.email}</h3>
-            <Link to="/update-profile">Aktualizuj profil</Link>
-        </AddContainer >
+        <ProfilContainer>
+            <div>
+                <Image />
+            </div>
+            <div>
+                <SubtitleOther>Witaj, <span>{currentUser.email}</span></SubtitleOther>
+            </div>
+            <div>
+                <Button onClick={handleLogout}>Wyloguj się</Button>
+                <Button><Link to="/update-profile">Aktualizuj profil</Link></Button>
+            </div>
+        </ProfilContainer >
     )
 }
 

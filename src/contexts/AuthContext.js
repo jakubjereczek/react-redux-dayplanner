@@ -51,9 +51,7 @@ export const AuthProvider = ({ children }) => {
 
     const values = {
         currentUser,
-        createAccount: (email, password) => {
-            singup(email, password);
-        },
+        singup,
         login,
         logout,
         reset,

@@ -30,16 +30,16 @@ toast.configure();
 
 const App = ({ loadElement }) => {
 
-  function loadDateFromLocalStorage() {
-    const loadedState = load();
-
-    if (loadedState !== undefined) {
-      loadedState.forEach(element => {
-        loadElement(element.id, element.expiredDate, element.text, element.createdDate)
+  load().then(elements => {
+    if (elements) {
+      elements.forEach(element => {
+        console.log(element)
+        if (element) {
+          loadElement(element.id, element.expiredDate, element.text, element.createdDate)
+        }
       })
     }
-  }
-  loadDateFromLocalStorage();
+  })
 
   return (
     <>

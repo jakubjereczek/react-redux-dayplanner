@@ -15,7 +15,7 @@ const planner = (state = [], action) => {
                 }
             ]
         case PLANNER_REMOVE:
-            const elementsWithoutElementToRemove = state.filter(element => element.id !== action.id);
+            const elementsWithoutElementToRemove = state.filter(element => element.id != action.id);
             return [
                 ...elementsWithoutElementToRemove
             ]

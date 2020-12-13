@@ -10,7 +10,10 @@ import {
     ACCOUNT_CHANGE_LOADING_FAILED,
     ACCOUNT_REMIND_PASSWORD_LOADING,
     ACCOUNT_REMIND_PASSWORD_LOADING_SUCCESFUL,
-    ACCOUNT_REMIND_PASSWORD_LOADING_FAILED
+    ACCOUNT_REMIND_PASSWORD_LOADING_FAILED,
+    ACCOUNT_REGISTER_LOADING,
+    ACCOUNT_REGISTER_LOADING_SUCCESFUL,
+    ACCOUNT_REGISTER_LOADING_FAILED,
 } from '../constants'
 
 import notification from '../toast'
@@ -24,6 +27,7 @@ const notificationMiddleware = () => next => action => {
         case ACCOUNT_LOGOUT_LOADING:
         case ACCOUNT_CHANGE_LOADING:
         case ACCOUNT_REMIND_PASSWORD_LOADING:
+        case ACCOUNT_REGISTER_LOADING:
             notification.toastDefault("Ładowanie...")
             break;
         case ACCOUNT_LOGIN_LOADING_SUCCESFUL:
@@ -49,6 +53,12 @@ const notificationMiddleware = () => next => action => {
             break;
         case ACCOUNT_REMIND_PASSWORD_LOADING_FAILED:
             notification.toastWarn("Wystąpił problem z odzyskiwaniem hasla. Bląd " + errors.selectAuthError(action.err_code));
+            break;
+        case ACCOUNT_REGISTER_LOADING_SUCCESFUL:
+            notification.toastSuccess("Konto zostało zarejestrowane. Zaraz zostaniesz przeniesiony na stone głowna");
+            break;
+        case ACCOUNT_REGISTER_LOADING_FAILED:
+            notification.toastWarn("Wystąpił problem z rejestracją. Bląd " + errors.selectAuthError(action.err_code));
             break;
     }
     next(action);

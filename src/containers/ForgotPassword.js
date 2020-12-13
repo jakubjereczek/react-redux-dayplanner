@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { Form as FinalForm, Field } from 'react-final-form'
 
-import { AddContainer } from '../style/Containers';
-import { Title } from '../style/App';
-import { Input, Label } from '../style/Form';
+import { AddContainer, DividedInsideContainer } from '../style/Containers';
+import { LeftContainer, RightContainer, TitleLogo, TitleLogoBold, LogoContainer, Image } from '../style/Start';
+
+import { Title, SubtitleCenter } from '../style/App';
+import { Input, Label, InputBorder, InputError } from '../style/Form';
 import { Button, ButtonInside } from '../style/App';
 
 import { useAuth } from '../contexts/AuthContext'
@@ -46,29 +48,50 @@ const ForgotPassword = () => {
     }
 
     return (
-        <AddContainer>
-            <Title>Przypomij haslo</Title>
-            <FinalForm onSubmit={onSubmit}
-                render={({ handleSubmit, form, submitting, pristine, values }) => (
-                    <form onSubmit={handleSubmit}>
-                        <Field name="email" validate={required}>
-                            {({ input, meta }) => (
-                                <div>
-                                    <Label>Email</Label>
-                                    <Input {...input} type="email" placeholder="Your email adress" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                            )}
-                        </Field>
+        <Fragment>
+            <LogoContainer>
+                <p>
+                    Day <span>planner</span>
+                </p>
+            </LogoContainer>
+            <AddContainer>
+                <Title>Przypomij haslo</Title>
+                <DividedInsideContainer>
+                    <LeftContainer>
+                        <Image />
+                        <TitleLogo>Plan your day to <TitleLogoBold>be smart</TitleLogoBold></TitleLogo>
+                    </LeftContainer>
+                    <RightContainer>
+                        <FinalForm onSubmit={onSubmit}
+                            render={({ handleSubmit, form, submitting, pristine, values }) => (
+                                <form onSubmit={handleSubmit}>
+                                    <Field name="email" validate={required}>
+                                        {({ input, meta }) => (
+                                            <div>
+                                                <Label>Email</Label>
+                                                <InputBorder>
+                                                    <Input {...input} type="email" placeholder="Your email adress" />
+                                                    <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}</InputError>
 
-                        <ButtonInside disabled={isLoading} type="submit" disabled={submitting}>
-                            Reset Password</ButtonInside>
-                    </form>
-                )}
-            />
-            <p>Nie posiadasz konta? <Link to="/signup" >Zarejestuj sie</Link></p>
-            <p>Wroc do <Link to="/login">logowania</Link></p>
-        </AddContainer>
+                                                </InputBorder>
+                                            </div>
+                                        )}
+                                    </Field>
+
+                                    <Button disabled={isLoading} type="submit" disabled={submitting}>
+                                        Reset</Button>
+                                </form>
+                            )}
+                        />
+                    </RightContainer>
+                </DividedInsideContainer>
+                <div>
+
+                    <SubtitleCenter>Nie posiadasz konta? <span><Link to="/signup" >Zarejestuj sie</Link></span></SubtitleCenter>
+                    <SubtitleCenter>Powrót do <span><Link to="/login">logowania</Link></span></SubtitleCenter>
+                </div>
+            </AddContainer>
+        </Fragment>
     )
 }
 

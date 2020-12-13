@@ -1,38 +1,84 @@
 import styled from 'styled-components';
 
+import img from './images/icons.png';
+
 export const SingleElement = styled.li`
     display: flex;
-    align-items: flex-start;
-
-    background: ${props => props.expired ? "tomato" : props.theme.colors.main};
+    min-height: 80px;
     text-decoration: none;
     list-style: none;
-    padding: 5px 10px;
     margin-top: 5px;
+    background-color: #C4C4C4;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & > div:nth-of-type(1) {
+        width: 30px;
+        min-height: 100%;
+        background-color: ${props => props.expired ? '#E76E6E' : props.theme.colors.main};
+    }
+
+    & > div:nth-of-type(2), & > div:nth-of-type(3), & > div:nth-of-type(4) {
+        padding: 5px 10px; 
+        margin-top: 5px; 
+    }
+
+    & > div:nth-of-type(2) {
+        flex-basis: 10%;
+        font-size: 24px;
+    }
+
+    & > div:nth-of-type(3) {
+        flex-direction: column;
+        flex-basis: 70%;
+        justify-content: flex-start;
+    } 
+
+    & > div:nth-of-type(4) {
+        flex-direction: row;
+        flex-basis: 20%;
+    }
+
 `
 
 export const Text = styled.p`
-    flex-basis: 75%;
-    display: inline-block;
-    padding: 0px 10px;
-    /* overflow-wrap: break-word;
-    word-wrap: break-word; */
+    width: 100%;
     font-size: 1.15rem;
-    color: #fff;
+    font-weight: 500;
+    color: #000;
+    margin: 0;
 `
 
 export const Hour = styled.span`
-    flex-basis: 10%;
-    align-self: center;
-    text-align: center;
+    font-size: 0.8rem;
+    width: 100%;
+    margin: 0;
 `
 
-export const Manage = styled.div`
-    flex-basis: 15%;
-    min-width: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
+export const ImageInfo = styled.div`
+    width: 32px;
+    height: 32px;
+    background-image: url(${img});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    transition: .6s;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+`
+export const ImageDelete = styled(ImageInfo)`
+    margin-left: 10px;
+    background-position-x: -40px;
 `
 
+export const ImageEdit = styled(ImageInfo)`
+    margin-left: 10px;
+    background-position-x: -75px;
+`

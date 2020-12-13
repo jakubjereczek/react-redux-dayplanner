@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form as FinalForm, Field } from 'react-final-form'
 
-import { Input, Label } from '../style/Form';
+import { Input, Label, Textarea, InputError, InputBorder } from '../style/Form';
 import { Button } from '../style/App';
 
 import { addElement } from '../actions/planner.actions';
@@ -42,8 +42,10 @@ const Form = ({ planner, addElement }) => {
                         {({ input, meta }) => (
                             <div>
                                 <Label>Zadanie</Label>
-                                <Input {...input} type="text" placeholder="Treść nowego zadania..." />
-                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                <InputBorder textarea={true}>
+                                    <Textarea {...input} type="text" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
+                                    <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}</InputError>
+                                </InputBorder>
                             </div>
                         )}
                     </Field>
@@ -51,12 +53,14 @@ const Form = ({ planner, addElement }) => {
                         {({ input, meta }) => (
                             <div>
                                 <Label>Godzina</Label>
-                                <Input {...input} type="time" placeholder="Last Name" />
-                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                <InputBorder>
+                                    <Input {...input} type="time" placeholder="Last Name" />
+                                    <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}</InputError>
+                                </InputBorder>
+
                             </div>
                         )}
                     </Field>
-
                     <Button type="submit" disabled={submitting}>
                         Dodaj
                     </Button>

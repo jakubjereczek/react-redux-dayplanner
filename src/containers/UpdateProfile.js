@@ -5,9 +5,9 @@ import { Form as FinalForm, Field } from 'react-final-form'
 import Profil from './Profil';
 
 import { AddContainer } from '../style/Containers';
-import { Title } from '../style/App';
-import { Input, Label } from '../style/Form';
-import { Button, ButtonInside } from '../style/App';
+import { Title, SubtitleCenter } from '../style/App';
+import { Input, Label, InputBorder, InputError } from '../style/Form';
+import { ButtonInside } from '../style/App';
 
 import { useAuth } from '../contexts/AuthContext'
 import { useDispatch } from 'react-redux'
@@ -21,7 +21,6 @@ import notification from '../toast'
 
 const UpdateProfile = () => {
 
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const {
@@ -40,7 +39,6 @@ const UpdateProfile = () => {
         const promises = [];
         console.log(values.email)
         if (values.email !== currentUser.email) {
-            console.log("nie jest taki sam")
             promises.push(updateEmail(values.email))
         }
         if (values.password)
@@ -72,8 +70,10 @@ const UpdateProfile = () => {
                                 {({ input, meta }) => (
                                     <div>
                                         <Label>Email</Label>
-                                        <Input {...input} type="email" defaultValue={currentUser.email} />
-                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                        <InputBorder>
+                                            <Input {...input} type="email" initialValue={currentUser.email} />
+                                            <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}</InputError>
+                                        </InputBorder>
                                     </div>
                                 )}
                             </Field>
@@ -81,8 +81,10 @@ const UpdateProfile = () => {
                                 {({ input, meta }) => (
                                     <div>
                                         <Label>Haslo</Label>
-                                        <Input {...input} type="password" placeholder="Your password" />
-                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                        <InputBorder>
+                                            <Input {...input} type="password" placeholder="Your password" />
+                                            <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}</InputError>
+                                        </InputBorder>
                                     </div>
                                 )}
                             </Field>
@@ -90,8 +92,10 @@ const UpdateProfile = () => {
                                 {({ input, meta }) => (
                                     <div>
                                         <Label>Powtórz haslo</Label>
-                                        <Input {...input} type="password" placeholder="Your password" />
-                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                        <InputBorder>
+                                            <Input {...input} type="password" placeholder="Your password" />
+                                            <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}</InputError>
+                                        </InputBorder>
                                     </div>
                                 )}
                             </Field>
@@ -101,7 +105,7 @@ const UpdateProfile = () => {
                         </form>
                     )}
                 />
-                <p><Link to="/" >Powrót</Link></p>
+                <SubtitleCenter><Link to="/" >Powrót do strony głównej</Link></SubtitleCenter>
             </AddContainer>
         </>
     )

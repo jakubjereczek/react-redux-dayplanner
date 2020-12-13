@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     height: 100vh;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   * {
@@ -12,7 +12,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
+    color: inherit;
+  }
+
+  button > a {
     width: 100%;
+    text-decoration: none;
+    color: #fff;
   }
 `;
 

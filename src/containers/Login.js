@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { Form as FinalForm, Field } from 'react-final-form'
 
-import { AddContainer } from '../style/Containers';
-import { Title } from '../style/App';
-import { Input, Label } from '../style/Form';
-import { Button, ButtonInside } from '../style/App';
+import { AddContainer, DividedInsideContainer } from '../style/Containers';
+import { LeftContainer, RightContainer, TitleLogo, TitleLogoBold, LogoContainer, Image } from '../style/Start';
+import { Title, SubtitleCenter } from '../style/App';
+import { Input, Label, InputBorder, InputError } from '../style/Form';
+import { Button } from '../style/App';
 
 import { useAuth } from '../contexts/AuthContext'
 
@@ -26,7 +27,6 @@ const Login = () => {
         currentUser,
         login } = useAuth();
 
-    const [isError, setError] = useState("");
     const [isLoading, setLoading] = useState(false);
 
     const required = value => (value ? undefined : 'Pole jest wymagane')
@@ -46,41 +46,60 @@ const Login = () => {
     }
 
     return (
-        <AddContainer>
-            <Title>Login</Title>
-            {isError ? <h4>{isError}</h4> : null}
-            <FinalForm onSubmit={onSubmit}
-                render={({ handleSubmit, form, submitting, pristine, values }) => (
-                    <form onSubmit={handleSubmit}>
-                        <Field name="email" validate={required}>
-                            {({ input, meta }) => (
-                                <div>
-                                    <Label>Email</Label>
-                                    <Input {...input} type="email" placeholder="Your email adress" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+        <Fragment>
+            <LogoContainer>
+                <p>
+                    Day <span>planner</span>
+                </p>
+            </LogoContainer>
+            <AddContainer>
+                <Title>Login</Title>
+                <DividedInsideContainer>
+                    <LeftContainer>
+                        <Image />
+                        <TitleLogo>Plan your day to <TitleLogoBold>be smart</TitleLogoBold></TitleLogo>
+                    </LeftContainer>
+                    <RightContainer>
+                        <FinalForm onSubmit={onSubmit}
+                            render={({ handleSubmit, form, submitting, pristine, values }) => (
+                                <form onSubmit={handleSubmit}>
+                                    <Field name="email" validate={required}>
+                                        {({ input, meta }) => (
+                                            <div>
+                                                <Label>Email</Label>
+                                                <InputBorder>
+                                                    <Input {...input} type="email" placeholder="Your email adress" />
+                                                    <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}
+                                                    </InputError>
+                                                </InputBorder>
+                                            </div>
+                                        )}
+                                    </Field>
+                                    <Field name="password" validate={required}>
+                                        {({ input, meta }) => (
+                                            <div>
+                                                <Label>Haslo</Label>
+                                                <InputBorder>
+                                                    <Input {...input} type="password" placeholder="Your password" />
+                                                    <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}</InputError>
+                                                </InputBorder>
+                                            </div>
+                                        )}
+                                    </Field>
+
+                                    <Button disabled={isLoading} type="submit" disabled={submitting}>
+                                        Zaloguj się</Button>
+                                </form>
                             )}
-                        </Field>
-                        <Field name="password" validate={required}>
-                            {({ input, meta }) => (
-                                <div>
-                                    <Label>Haslo</Label>
-                                    <Input {...input} type="password" placeholder="Your password" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
-                            )}
-                        </Field>
-
-                        <ButtonInside disabled={isLoading} type="submit" disabled={submitting}>
-                            Zaloguj się</ButtonInside>
-                    </form>
-                )}
-            />
-            <p>Nie posiadasz konta? <Link to="/signup" >Zarejestuj sie</Link></p>
-            <p>Nie pamiętasz hasla? <Link to="/forgot-password" >Przypomnij haslo</Link></p>
-
-
-        </AddContainer>
+                        />
+                    </RightContainer>
+                </DividedInsideContainer>
+                <div>
+                    <SubtitleCenter>Nie posiadasz konta? <span><Link to="/signup" >Zarejestuj sie</Link></span>.</SubtitleCenter>
+                    <SubtitleCenter>Nie pamiętasz hasla? <span><Link to="/forgot-password" >Przypomnij haslo</Link></span>.</SubtitleCenter>
+                </div>
+            </AddContainer>
+        </Fragment>
     )
 }
 
