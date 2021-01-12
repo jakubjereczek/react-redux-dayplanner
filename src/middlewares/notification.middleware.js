@@ -60,6 +60,8 @@ const notificationMiddleware = () => next => action => {
         case ACCOUNT_REGISTER_LOADING_FAILED:
             notification.toastWarn("Wystąpił problem z rejestracją. Bląd " + errors.selectAuthError(action.err_code));
             break;
+        default:
+            break;
     }
     next(action);
 }

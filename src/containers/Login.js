@@ -23,9 +23,7 @@ const Login = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const {
-        currentUser,
-        login } = useAuth();
+    const { login } = useAuth();
 
     const [isLoading, setLoading] = useState(false);
 
@@ -68,7 +66,7 @@ const Login = () => {
                                             <div>
                                                 <Label>Email</Label>
                                                 <InputBorder>
-                                                    <Input {...input} type="email" placeholder="Your email adress" />
+                                                    <Input {...input} type="email" placeholder="Your email address" />
                                                     <InputError>{meta.error && meta.touched && <span>{meta.error}</span>}
                                                     </InputError>
                                                 </InputBorder>

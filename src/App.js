@@ -13,6 +13,7 @@ import NotFound from './containers/NotFound';
 import Info from './containers/Info';
 import Login from './containers/Login';
 import Signup from './containers/Signup';
+import Profil from './containers/Profil';
 import ForgotPassword from './containers/ForgotPassword';
 import UpdateProfile from './containers/UpdateProfile';
 
@@ -44,12 +45,13 @@ const App = ({ loadElement }) => {
   return (
     <>
       <ToastContainer />
-      <Router forceRefresh={true} basename={process.env.PUBLIC_URL}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <AppContainer>
-              <GlobalStyle />
-              <Main>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <AppContainer>
+            <GlobalStyle />
+            <Main>
+              <Router basename={process.env.PUBLIC_URL}>
+                <Profil />
                 <Switch>
                   {/* Prywatne routy z PrivateRoute */}
                   <PrivateRoute exact path="/">
@@ -77,11 +79,11 @@ const App = ({ loadElement }) => {
                     <NotFound />
                   </Route>
                 </Switch>
-              </Main>
-            </AppContainer>
-          </ThemeProvider>
-        </AuthProvider>
-      </Router>
+              </Router>
+            </Main>
+          </AppContainer>
+        </ThemeProvider>
+      </AuthProvider>
     </>
   )
 }

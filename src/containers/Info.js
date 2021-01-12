@@ -31,7 +31,6 @@ const Info = ({ planner, removeClick }) => {
     if (elementExist === undefined) {
         return (
             <>
-                <Profil />
                 <AddContainer>
                     <Title>Elementu o podanym ID nie mamy w bazie!</Title>
                     <Link to="/"><ButtonInside>Wróć do strony głownej</ButtonInside></Link>
@@ -41,7 +40,6 @@ const Info = ({ planner, removeClick }) => {
     } else {
         return (
             <>
-                <Profil />
                 <AddContainer>
                     <Title>Informacje o elemencie {id}</Title>
                     <Subtitle nomarginbottom>Treść</Subtitle>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Form as FinalForm, Field } from 'react-final-form'
 
 import Profil from './Profil';
@@ -28,8 +28,6 @@ const UpdateProfile = () => {
         updateEmail, updatePassword } = useAuth();
 
     const [isLoading, setLoading] = useState(false);
-
-    const required = value => (value ? undefined : 'Pole jest wymagane')
 
     const onSubmit = async (values) => {
         if (values.password !== values.passwordconfirm) {
@@ -60,7 +58,6 @@ const UpdateProfile = () => {
 
     return (
         <>
-            <Profil />
             <AddContainer>
                 <Title>Aktualizacja profilu</Title>
                 <FinalForm onSubmit={onSubmit}

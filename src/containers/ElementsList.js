@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { ElementsContainer } from '../style/Containers';
 import Element from '../components/Element';
@@ -20,10 +20,10 @@ const ElementsList = ({ planner, removeClick }) => {
         return a.expiredDate - b.expiredDate;
     });
 
-    const actualTime = new Date().getTime();
+    const currentlyTime = new Date().getTime();
 
-    let elementsToDo = sortedPlanner.filter(task => task.expiredDate > actualTime)
-    let elementsExpired = sortedPlanner.filter(task => task.expiredDate <= actualTime);
+    let elementsToDo = useMemo(() => sortedPlanner.filter(task => task.expiredDate > currentlyTime), [sortedPlanner, currentlyTime]);
+    let elementsExpired = useMemo(() => sortedPlanner.filter(task => task.expiredDate <= currentlyTime), [sortedPlanner, currentlyTime]);
 
     // index = iteracja
     let i = 0;

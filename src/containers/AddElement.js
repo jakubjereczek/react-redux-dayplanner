@@ -10,7 +10,6 @@ const AddElement = () => {
 
     return (
         <>
-            <Profil />
             <AddContainer>
                 <Title>Dodaj element do listy zadań dnia!</Title>
                 <Form />

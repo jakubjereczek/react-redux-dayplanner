@@ -84,7 +84,7 @@ export const Main = styled.div`
     width: 100%;
     min-width: 320px;
     max-width: ${props => props.theme.width}px;
-;
+    
 `
 
 export const AppContainer = styled.div`

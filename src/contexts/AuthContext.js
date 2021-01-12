@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }) => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user);
             setLoading(false);
+            console.log("AuthContext: poprawione dane dla uzytkownika.")
             // W zaleznosci czy sie powiedzie wstawi nazwe usera lub null;
         })
 

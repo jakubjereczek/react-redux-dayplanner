@@ -33,7 +33,7 @@ export const ProfilContainer = styled(AddContainer)`
     /* width: 100%; */
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 40px;
     & > div {
         flex-basis: 33%;
         width: 33%;
@@ -42,6 +42,7 @@ export const ProfilContainer = styled(AddContainer)`
     @media(max-width: 768px) {
         /* flex-direction: column; */
         height: auto;
+        margin-top: 10px;
         & > div:nth-child(1) {
             display: none;
         }
