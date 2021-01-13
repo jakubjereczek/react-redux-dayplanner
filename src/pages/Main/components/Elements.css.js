@@ -19,7 +19,7 @@ export const SingleElement = styled.li`
     & > div:nth-of-type(1) {
         width: 30px;
         min-height: 100%;
-        background-color: ${props => props.expired ? '#E76E6E' : props.theme.colors.main};
+        background-color: ${props => props.expired ? '#E76E6E' : '#19A56F'};
     }
 
     & > div:nth-of-type(2), & > div:nth-of-type(3), & > div:nth-of-type(4) {

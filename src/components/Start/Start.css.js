@@ -36,10 +36,12 @@ export const Image = styled.div`
 
 `
 export const TitleLogo = styled.p`
+    color: ${props => props.theme.colors.text};
     font-size: 26px;
     margin-top: 10px;
 `
 export const TitleLogoBold = styled.span`
+    color: ${props => props.theme.colors.text};
     display: block;
     font-weight: bold;
 `

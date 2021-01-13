@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const DefaultContainer = styled.div`
-    background: white;
+    position: relative;
+    background: ${props => props.theme.colors.background};
     box-shadow: 0px 10px 15px 3px rgba(0,0,0,0.2);
     padding: 10px;
     margin-top: 10px;

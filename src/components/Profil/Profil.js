@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import Text from 'components/Text';
 import { Image, ProfilContainer } from './Profil.css';
 import Button from 'components/Button'
+import ColorChanger from 'components/ColorChanger';
+
 import { useAuth } from 'contexts/AuthContext'
 
 import { useDispatch } from 'react-redux'
@@ -42,6 +44,7 @@ const Profil = () => {
                     <Text type="subtitle-other">Witaj, <span>{currentUser.email}</span></Text>
                 </div>
                 <div>
+                    <ColorChanger />
                     <Button onClick={handleLogout}>Wyloguj się</Button>
                     <Button to="/update-profile">Aktualizuj profil</Button>
                 </div>

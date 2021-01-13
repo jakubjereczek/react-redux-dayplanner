@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import Container from 'components/Container';
 import { LeftContainer, RightContainer, TitleLogo, TitleLogoBold, LogoContainer, Image } from './Start.css';
 import Text from 'components/Text';
+import ColorChanger from 'components/ColorChanger';
 
 const Start = ({ children, ...props }) => {
 
@@ -11,12 +12,14 @@ const Start = ({ children, ...props }) => {
     return (
         <Fragment>
             <LogoContainer>
-                <p>
-                    Day <span>planner</span>
-                </p>
+                <Text>
+                    Day <b>planner</b>
+                </Text>
             </LogoContainer>
             <Container>
                 <Text type="title">{name}</Text>
+                <ColorChanger />
+
                 <Container type="divitedInside">
                     <LeftContainer>
                         <Image />

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../utils/firebase';
+import { auth } from '../firebase';
 
 const AuthContext = React.createContext(undefined);
 
@@ -16,20 +16,6 @@ export const AuthProvider = ({ children }) => {
 
     const login = (email, password) => auth.signInWithEmailAndPassword(email, password);
 
-    // return await new Promise((resolve, reject) => {
-    //     auth.signInWithEmailAndPassword(email, password).then((res) => {
-    //         resolve(res);
-    //     }).catch(err => {
-    //         reject(err)
-    //     });
-    // })
-    // notification("test");
-    // return auth.signInWithEmailAndPassword(email, password)
-    //     .then(res => notification("Witaj " + currentUser.email + ", zostałeś zalogowany!"))
-    //     .catch(err => notification(err.message));
-    // err.code - potem pod api
-
-
     const logout = () => auth.signOut();
 
     const updateEmail = (email) => currentUser.updateEmail(email);
@@ -43,7 +29,6 @@ export const AuthProvider = ({ children }) => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user);
             setLoading(false);
-            console.log("AuthContext: poprawione dane dla uzytkownika.")
             // W zaleznosci czy sie powiedzie wstawi nazwe usera lub null;
         })
 

@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-export const theme = {
-    colors: {
-        main: "#19a56f",
-    },
-    width: '800',
-}
-
-
 export const Main = styled.div`
      margin: 0 auto;
      display: flex;
