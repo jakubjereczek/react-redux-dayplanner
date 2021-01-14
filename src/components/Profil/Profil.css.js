@@ -5,7 +5,7 @@ import img from './images/profil.png';
 
 export const Image = styled.div`
     position: absolute;
-    top: -50px;
+    top: -43px;
     background-image: url(${img});
     background-size: auto 100%;
     background-repeat: no-repeat;
