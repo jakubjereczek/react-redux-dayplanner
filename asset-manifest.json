@@ -1,19 +1,24 @@
 {
   "files": {
-    "main.js": "/react-redux-dayplanner/static/js/main.050cc228.chunk.js",
-    "main.js.map": "/react-redux-dayplanner/static/js/main.050cc228.chunk.js.map",
+    "main.js": "/react-redux-dayplanner/static/js/main.278ff5ab.chunk.js",
+    "main.js.map": "/react-redux-dayplanner/static/js/main.278ff5ab.chunk.js.map",
     "runtime-main.js": "/react-redux-dayplanner/static/js/runtime-main.bd37c4c5.js",
     "runtime-main.js.map": "/react-redux-dayplanner/static/js/runtime-main.bd37c4c5.js.map",
-    "static/js/2.fe7eb840.chunk.js": "/react-redux-dayplanner/static/js/2.fe7eb840.chunk.js",
-    "static/js/2.fe7eb840.chunk.js.map": "/react-redux-dayplanner/static/js/2.fe7eb840.chunk.js.map",
+    "static/css/2.1781c263.chunk.css": "/react-redux-dayplanner/static/css/2.1781c263.chunk.css",
+    "static/js/2.1a88f49e.chunk.js": "/react-redux-dayplanner/static/js/2.1a88f49e.chunk.js",
+    "static/js/2.1a88f49e.chunk.js.map": "/react-redux-dayplanner/static/js/2.1a88f49e.chunk.js.map",
     "index.html": "/react-redux-dayplanner/index.html",
-    "precache-manifest.284578e5835ddd740d09bc509764408f.js": "/react-redux-dayplanner/precache-manifest.284578e5835ddd740d09bc509764408f.js",
+    "precache-manifest.662bac224bfa2f63866c44c0ab1e20d7.js": "/react-redux-dayplanner/precache-manifest.662bac224bfa2f63866c44c0ab1e20d7.js",
     "service-worker.js": "/react-redux-dayplanner/service-worker.js",
-    "static/js/2.fe7eb840.chunk.js.LICENSE.txt": "/react-redux-dayplanner/static/js/2.fe7eb840.chunk.js.LICENSE.txt"
+    "static/css/2.1781c263.chunk.css.map": "/react-redux-dayplanner/static/css/2.1781c263.chunk.css.map",
+    "static/js/2.1a88f49e.chunk.js.LICENSE.txt": "/react-redux-dayplanner/static/js/2.1a88f49e.chunk.js.LICENSE.txt",
+    "static/media/profil.png": "/react-redux-dayplanner/static/media/profil.bf8b029f.png",
+    "static/media/tasks.png": "/react-redux-dayplanner/static/media/tasks.a822ee8e.png"
   },
   "entrypoints": [
     "static/js/runtime-main.bd37c4c5.js",
-    "static/js/2.fe7eb840.chunk.js",
-    "static/js/main.050cc228.chunk.js"
+    "static/css/2.1781c263.chunk.css",
+    "static/js/2.1a88f49e.chunk.js",
+    "static/js/main.278ff5ab.chunk.js"
   ]
 }
